@@ -23,7 +23,7 @@ const { title = "Portfolio" } = Astro.props;
 	</head>
 	<body class="bg-main text-main font-sans min-h-screen flex flex-col">
 		<header class="w-full py-6 px-4 md:px-8 border-b border-slate-800/50 backdrop-blur-sm fixed top-0 z-50 bg-main/80">
-			<div class="max-w-7xl mx-auto flex justify-between items-center">
+			<div class="max-w-7xl mx-auto flex justify-between items-center relative">
 				<a href="/" class="text-2xl font-bold tracking-tight">Portfolio</a>
 				<nav class="hidden md:flex gap-8 text-sm font-medium">
 					<a href="/" class="hover:text-primary transition-colors">ホーム</a>
@@ -31,13 +31,95 @@ const { title = "Portfolio" } = Astro.props;
 					<a href="/projects" class="hover:text-primary transition-colors">プロジェクト</a>
 					<a href="/contact" class="hover:text-primary transition-colors">お問い合わせ</a>
 				</nav>
-				<button class="md:hidden p-2 text-muted hover:text-white">
+				<button id="menu-btn" class="md:hidden p-2 text-muted hover:text-white">
 					<span class="sr-only">Open menu</span>
 					<svg xmlns="http://www.w3.org/2004/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
 						<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
 					</svg>
+			</div>
+		</header>
+
+		<!-- Mobile Menu Backdrop -->
+		<div id="mobile-menu-backdrop" class="fixed inset-0 bg-black/60 z-[60] transition-opacity opacity-0 pointer-events-none md:hidden backdrop-blur-sm" aria-hidden="true"></div>
+
+		<!-- Mobile Menu Drawer -->
+		<nav id="mobile-menu-drawer" class="fixed top-0 right-0 h-[100dvh] w-80 bg-[#0B1120] z-[70] transform transition-transform duration-300 ease-in-out translate-x-full md:hidden flex flex-col border-l border-white/10 shadow-2xl">
+			<!-- Drawer Header -->
+			<div class="flex justify-between items-center p-6 border-b border-white/10">
+				<span class="text-xl font-bold tracking-tight text-white">Menu</span>
+				<button id="close-menu-btn" class="text-slate-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/5">
+					<span class="sr-only">Close menu</span>
+					<svg xmlns="http://www.w3.org/2004/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+					</svg>
 				</button>
 			</div>
+
+			<!-- Drawer Navigation -->
+			<div class="flex-grow p-6 space-y-2 overflow-y-auto">
+				<a href="/" class="flex items-center gap-4 py-3 px-4 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-all group">
+					<svg xmlns="http://www.w3.org/2004/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 group-hover:text-primary transition-colors">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+					</svg>
+					<span class="font-medium">Home</span>
+					<svg xmlns="http://www.w3.org/2004/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 ml-auto opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+					</svg>
+				</a>
+				<a href="/#about" class="flex items-center gap-4 py-3 px-4 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-all group">
+					<svg xmlns="http://www.w3.org/2004/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 group-hover:text-primary transition-colors">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+					</svg>
+					<span class="font-medium">Profile</span>
+					<svg xmlns="http://www.w3.org/2004/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 ml-auto opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+					</svg>
+				</a>
+				<a href="/projects" class="flex items-center gap-4 py-3 px-4 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-all group">
+					<svg xmlns="http://www.w3.org/2004/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 group-hover:text-primary transition-colors">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z" />
+					</svg>
+					<span class="font-medium">Projects</span>
+					<svg xmlns="http://www.w3.org/2004/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 ml-auto opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+					</svg>
+				</a>
+				<a href="/contact" class="flex items-center gap-4 py-3 px-4 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-all group">
+					<svg xmlns="http://www.w3.org/2004/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 group-hover:text-primary transition-colors">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+					</svg>
+					<span class="font-medium">Contact</span>
+					<svg xmlns="http://www.w3.org/2004/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 ml-auto opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+					</svg>
+				</a>
+			</div>
+
+			<!-- Drawer Footer -->
+			<div class="p-6 border-t border-white/10 bg-black/20">
+				<a href="/contact" class="flex items-center justify-center gap-2 w-full py-3 bg-primary text-white rounded-full font-medium mb-6 hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/20 group">
+					<span>Contact me?</span>
+					<span class="text-sm opacity-80 font-normal">お問い合わせ</span>
+					<svg xmlns="http://www.w3.org/2004/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 group-hover:translate-x-1 transition-transform">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+					</svg>
+				</a>
+				
+				<div class="flex justify-between items-center">
+					<div class="flex gap-4">
+						<a href="https://x.com/MusicPuzzleGame" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-white transition-colors">
+							<span class="sr-only">Twitter</span>
+							<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg>
+						</a>
+						<a href="https://github.com/Sugasan3054" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-white transition-colors">
+							<span class="sr-only">GitHub</span>
+							<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+						</a>
+					</div>
+					<span class="text-xs text-slate-600">© 2024</span>
+				</div>
+			</div>
+		</nav>
 		</header>
 
 		<main class="flex-grow pt-24 px-4 md:px-8">
@@ -61,5 +143,66 @@ const { title = "Portfolio" } = Astro.props;
 				</div>
 			</div>
 		</footer>
+
+		<script>
+			// メニュー開閉ロジック
+			function setupMobileMenu() {
+				const menuBtn = document.getElementById('menu-btn');
+				const closeMenuBtn = document.getElementById('close-menu-btn');
+				const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+				const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
+
+				if (menuBtn && closeMenuBtn && mobileMenuBackdrop && mobileMenuDrawer) {
+					// メニューを開く
+					const openMenu = () => {
+						mobileMenuBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+						mobileMenuBackdrop.classList.add('opacity-100', 'pointer-events-auto');
+						
+						mobileMenuDrawer.classList.remove('translate-x-full');
+						mobileMenuDrawer.classList.add('translate-x-0');
+						
+						document.body.style.overflow = 'hidden'; // 背景スクロール固定
+					};
+
+					// メニューを閉じる
+					const closeMenu = () => {
+						mobileMenuBackdrop.classList.remove('opacity-100', 'pointer-events-auto');
+						mobileMenuBackdrop.classList.add('opacity-0', 'pointer-events-none');
+						
+						mobileMenuDrawer.classList.remove('translate-x-0');
+						mobileMenuDrawer.classList.add('translate-x-full');
+						
+						document.body.style.overflow = ''; // 背景スクロール解除
+					};
+
+					menuBtn.addEventListener('click', (e) => {
+						e.stopPropagation();
+						openMenu();
+					});
+
+					closeMenuBtn.addEventListener('click', () => {
+						closeMenu();
+					});
+
+					mobileMenuBackdrop.addEventListener('click', () => {
+						closeMenu();
+					});
+
+					// リンククリックで閉じる
+					const links = mobileMenuDrawer.querySelectorAll('a');
+					links.forEach(link => {
+						link.addEventListener('click', () => {
+							closeMenu();
+						});
+					});
+				}
+			}
+
+			// 初期化
+			setupMobileMenu();
+
+			// Astro View Transitions 対応
+			document.addEventListener('astro:page-load', setupMobileMenu);
+		</script>
 	</body>
 </html>
