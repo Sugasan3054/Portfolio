@@ -49,7 +49,6 @@ export const projects: Project[] = [
             UIManager.Instance.ShowAlert("足音を立ててはいけません");
         }
     }`,
-        repoUrl: 'https://github.com/your-username/music-mixing', // 実際のリポジトリがあれば
     },
     {
         id: '2',
@@ -127,6 +126,6 @@ def predict():
         'similarity': f"{similarity:.1f}%"
     })`,
         demoUrl: 'https://sugasan3054.github.io/image/',
-        repoUrl: 'https://github.com/'
+        repoUrl: 'https://github.com/Sugasan3054/image'
     },
 ];
