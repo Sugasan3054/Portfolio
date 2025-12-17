@@ -1,0 +1,205 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects } from '../data/projects';
+
+const featuredProjects = projects.slice(0, 3);
+---
+
+<Layout title="Portfolio | UI/UX Designer">
+	<!-- Hero Section -->
+	<section class="min-h-[calc(100vh-6rem)] flex items-center py-20">
+		<div class="grid md:grid-cols-2 gap-12 items-center">
+			<div class="space-y-8">
+				<h1 class="text-4xl md:text-6xl font-bold leading-tight">
+					『企画』を『カタチ』にする<br class="hidden md:block" />
+					<span class="text-primary">Engineering Planner / Developer</span>
+				</h1>
+				<p class="text-muted text-lg max-w-lg">
+					アイデアを企画書だけで終わらせない。Unityでのゲーム開発やPythonによるAI実装スキルを駆使してプロトタイプを自ら構築し、『面白さ』を論理と動くモノで証明します。
+				</p>
+				<div class="flex flex-wrap gap-4">
+					<a href="/contact" class="px-8 py-3 bg-primary text-white font-medium rounded-full hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/20">
+						お問い合わせ
+					</a>
+					<a href="#about" class="px-8 py-3 bg-slate-800 text-white font-medium rounded-full hover:bg-slate-700 transition-colors border border-slate-700">
+						プロフィールを見る
+					</a>
+				</div>
+			</div>
+			<div class="relative items-center justify-center flex">
+				<div class="w-full aspect-square max-w-md rounded-2xl shadow-xl overflow-hidden border border-slate-700 group">
+					<img src="/assets/portfolio-website.jpg" alt="Hero Image" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+				</div>
+				<!-- Decorative elements -->
+				<div class="absolute -z-10 top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
+				<div class="absolute -z-10 bottom-0 left-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl"></div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Skill Section -->
+	<section id="skills" class="py-20">
+		<h2 class="text-3xl font-bold mb-12 text-center">Skills</h2>
+		<div class="grid md:grid-cols-2 gap-12">
+			<!-- Engineering Skills -->
+			<div class="bg-bg-card p-8 rounded-2xl border border-slate-800/50">
+				<h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+					<svg xmlns="http://www.w3.org/2004/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-primary">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+					</svg>
+					Engineering Skills
+				</h3>
+				<div class="space-y-6">
+					<div>
+						<h4 class="text-sm font-semibold text-primary mb-2">Game Development</h4>
+						<ul class="space-y-1 text-sm text-muted">
+							<li><strong class="text-slate-300">Unity (C#)</strong> - 3D/2Dゲームロジック・物理演算</li>
+							<li><strong class="text-slate-300">Photon PUN2</strong> - リアルタイム通信・同期処理</li>
+							<li><strong class="text-slate-300">Audio Programming</strong> - インタラクティブな音響実装</li>
+						</ul>
+					</div>
+					<div>
+						<h4 class="text-sm font-semibold text-primary mb-2">Web & App</h4>
+						<ul class="space-y-1 text-sm text-muted">
+							<li><strong class="text-slate-300">Astro / TypeScript</strong> - パフォーマンス重視のWeb設計(SSG)</li>
+							<li><strong class="text-slate-300">Python (Flask)</strong> - バックエンドAPI・マイクロサービス</li>
+							<li><strong class="text-slate-300">Tailwind CSS</strong> - 高速なUIコンポーネント開発</li>
+							<li><strong class="text-slate-300">Formspree</strong> - コンタクトフォームAPI統合</li>
+						</ul>
+					</div>
+					<div>
+						<h4 class="text-sm font-semibold text-primary mb-2">AI & Data</h4>
+						<ul class="space-y-1 text-sm text-muted">
+							<li><strong class="text-slate-300">OpenCV / TensorFlow</strong> - 画像認識・機械学習モデル</li>
+							<li><strong class="text-slate-300">LLM Integration</strong> - LangChain・AI機能の実装</li>
+						</ul>
+					</div>
+					<div>
+						<h4 class="text-sm font-semibold text-primary mb-2">Infrastructure</h4>
+						<ul class="space-y-1 text-sm text-muted">
+							<li><strong class="text-slate-300">Docker / Railway</strong> - コンテナ化・クラウドデプロイ</li>
+							<li><strong class="text-slate-300">Vercel</strong> - フロントエンドホスティング・CI/CD</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<!-- Workflow & Tools -->
+			<div class="bg-bg-card p-8 rounded-2xl border border-slate-800/50">
+				<h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+					<svg xmlns="http://www.w3.org/2004/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-primary">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a16.001 16.001 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
+					</svg>
+					Design & Tools (Workflow)
+				</h3>
+				<div class="space-y-6">
+					<div>
+						<h4 class="text-sm font-semibold text-primary mb-2">Generative AI</h4>
+						<ul class="space-y-1 text-sm text-muted">
+							<li><strong class="text-slate-300">Canva</strong> - AI素材生成・デザイン</li>
+							<li><strong class="text-slate-300">ChatGPT / Claude</strong> - ペアプログラミング・技術調査</li>
+						</ul>
+					</div>
+					<div>
+						<h4 class="text-sm font-semibold text-primary mb-2">Development Environment</h4>
+						<ul class="space-y-1 text-sm text-muted">
+							<li><strong class="text-slate-300">Visual Studio / VS Code</strong> - 統合開発環境・拡張機能活用</li>
+							<li><strong class="text-slate-300">Antigravity</strong> - クラウドネイティブAI開発環境</li>
+						</ul>
+					</div>
+					<div>
+						<h4 class="text-sm font-semibold text-primary mb-2">Collaboration</h4>
+						<ul class="space-y-1 text-sm text-muted">
+							<li><strong class="text-slate-300">Git / GitHub</strong> - バージョン管理・チーム開発</li>
+							<li><strong class="text-slate-300">Notion</strong> - プロジェクト管理・仕様策定</li>
+						</ul>
+					</div>
+					<div>
+						<h4 class="text-sm font-semibold text-primary mb-2">Design & Creative</h4>
+						<ul class="space-y-1 text-sm text-muted">
+							<li><strong class="text-slate-300">Stitch</strong> - UIデザイン生成</li>
+							<li><strong class="text-slate-300">InVideo</strong> - 動画生成・編集</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Works Section -->
+	<section id="works" class="py-20">
+		<h2 class="text-3xl font-bold mb-12 text-center">Selected Works</h2>
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+			{featuredProjects.map((project) => (
+				<ProjectCard project={project} />
+			))}
+		</div>
+		<div class="text-center mt-12">
+			<a href="/projects" class="inline-flex items-center gap-2 text-primary hover:text-blue-400 font-medium transition-colors">
+				すべてのプロジェクトを見る
+				<svg xmlns="http://www.w3.org/2004/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+				</svg>
+			</a>
+		</div>
+	</section>
+
+	<!-- About / History Section -->
+	<section id="about" class="py-20">
+		<div class="grid md:grid-cols-2 gap-16">
+			<div>
+				<h2 class="text-3xl font-bold mb-8">About Me</h2>
+				<h3 class="text-xl text-primary font-medium mb-4">Information Science Student (Junior Year)<br><span class="text-base text-slate-400">情報系専攻の大学3年生</span></h3>
+				<p class="text-muted leading-relaxed mb-6">
+					「『技術』と『遊び心』の交差点を追求するエンジニアリング・プランナー志望。<br>
+					大学では情報科学を専攻し、ソフトウェア工学やアルゴリズムの基礎を学びながら、個人・チーム問わず実践的なモノづくりに没頭しています。
+				</p>
+				<p class="text-muted leading-relaxed">
+					Unityによるゲーム開発から、Pythonを用いたAIモデルの構築、そしてモダンなWeb技術まで、領域を限定せずに『面白い』を実現するための技術を貪欲に吸収しています。
+				</p>
+			</div>
+			
+			<div>
+				<h2 class="text-3xl font-bold mb-8">History</h2>
+				<div class="space-y-8 border-l-2 border-slate-800 pl-8 ml-3">
+					<div class="relative">
+						<div class="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-4 border-bg-main bg-primary"></div>
+						<span class="text-sm text-primary font-medium">2025 (3rd Year - Present)</span>
+						<h3 class="text-lg font-bold mt-1">高度な実装への挑戦 / AIネイティブな開発</h3>
+						<p class="text-muted text-sm mt-2">
+							オンラインマルチプレイ（Photon）や音声解析、顔認識AIなど、より複雑な技術課題に挑戦。現在は生成AIやクラウドIDEを活用した「AIネイティブ」な開発フローを実践し、エンジニアリングと企画の両面からユーザー体験の向上を探求中。
+						</p>
+					</div>
+					<div class="relative">
+						<div class="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-4 border-bg-main bg-slate-600"></div>
+						<span class="text-sm text-slate-500 font-medium">2024 (2nd Year)</span>
+						<h3 class="text-lg font-bold mt-1">領域の拡張 / チーム開発の経験</h3>
+						<p class="text-muted text-sm mt-2">
+							関心をWebフロントエンドやAI領域へ拡大。チーム開発プロジェクトに参加し、Gitを用いたバージョン管理や、他者と協働して一つのプロダクトを作り上げる難しさと喜びを経験。
+						</p>
+					</div>
+					<div class="relative">
+						<div class="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-4 border-bg-main bg-slate-600"></div>
+						<span class="text-sm text-slate-500 font-medium">2023 (1st Year)</span>
+						<h3 class="text-lg font-bold mt-1">プログラミングとの出会い / Unity習得</h3>
+						<p class="text-muted text-sm mt-2">
+							大学入学を機に本格的にプログラミングを開始。C#とUnityを独学し、物理演算を用いたミニゲーム制作を通じて、オブジェクト指向やゲームループの基礎概念を確立。
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact Section (Simple placeholder) -->
+	<section id="contact" class="py-20 text-center">
+		<h2 class="text-3xl font-bold mb-6">Contact</h2>
+		<p class="text-muted mb-8 max-w-xl mx-auto">
+			お仕事のご依頼やご相談など、お気軽にお問い合わせください。
+		</p>
+		<a href="/contact" class="inline-block px-8 py-3 bg-primary text-white font-medium rounded-full hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/20">
+			メールを送る
+		</a>
+	</section>
+</Layout>

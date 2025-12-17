@@ -1,0 +1,35 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<a href={project.link} class="group block bg-card rounded-xl overflow-hidden border border-slate-800 hover:border-slate-600 transition-all duration-300 hover:shadow-lg hover:-translate-y-1" data-category={project.category}>
+  <div class="relative aspect-video overflow-hidden">
+    <img 
+      src={project.thumbnail} 
+      alt={project.title} 
+      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+    />
+    <div class="absolute top-3 right-3 bg-black/70 backdrop-blur-sm text-white text-xs px-2 py-1 rounded">
+      {project.category}
+    </div>
+  </div>
+  
+  <div class="p-5">
+    <h3 class="text-xl font-bold text-main mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
+    <p class="text-muted text-sm mb-4 line-clamp-2">{project.description}</p>
+    
+    <div class="flex flex-wrap gap-2">
+      {project.tags.map((tag) => (
+        <span class="text-xs font-medium px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">
+          {tag}
+        </span>
+      ))}
+    </div>
+  </div>
+</a>
