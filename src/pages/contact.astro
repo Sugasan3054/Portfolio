@@ -5,10 +5,14 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Contact | Portfolio">
   <div class="max-w-4xl mx-auto py-16 px-4">
     <div class="mb-12 text-center">
-      <h1 class="text-4xl font-bold text-main mb-6">お問い合わせ</h1>
-      <p class="text-muted leading-relaxed">
-        制作依頼や面談のご相談、その他ご質問などございましたら、お気軽にご連絡ください。<br />
-        通常2営業日以内に返信いたします。
+      <h1 class="text-4xl font-bold text-main mb-6">Get in Touch</h1>
+      <p class="text-muted leading-relaxed mb-4">
+        ポートフォリオをご覧いただきありがとうございます。<br />
+        現在、IT・Web・ゲーム業界（エンジニア・プランナー職）でのインターンシップや選考についてのお話を受け付けています。<br />
+        また、個人開発や技術に関するメッセージもお待ちしております。
+      </p>
+      <p class="text-sm text-slate-500 leading-relaxed">
+        ※いただいたメッセージには目を通しておりますが、内容によってはお返事を差し上げられない場合もございます。あらかじめご了承ください。
       </p>
     </div>
 
@@ -47,18 +51,18 @@ import Layout from '../layouts/Layout.astro';
               type="text" 
               id="subject" 
               name="subject" 
-              placeholder="面談のお願い"
+              placeholder="カジュアル面談について / ポートフォリオの感想"
               class="w-full px-4 py-3 rounded-lg bg-slate-800/50 border border-slate-700 text-main placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
             />
           </div>
 
           <div class="space-y-2">
-            <label for="message" class="block text-sm font-medium text-main">お問い合わせ内容 <span class="text-blue-500">*</span></label>
+            <label for="message" class="block text-sm font-medium text-main">メッセージ本文 <span class="text-blue-500">*</span></label>
             <textarea 
               id="message" 
               name="message" 
               rows="6" 
-              placeholder="詳細をご記入ください"
+              placeholder="メッセージをご記入ください"
               required
               class="w-full px-4 py-3 rounded-lg bg-slate-800/50 border border-slate-700 text-main placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-y"
             ></textarea>
@@ -72,7 +76,7 @@ import Layout from '../layouts/Layout.astro';
               <svg xmlns="http://www.w3.org/2004/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
                 <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
               </svg>
-              送信する
+              Send Message
             </button>
           </div>
         </form>
