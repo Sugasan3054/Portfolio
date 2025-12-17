@@ -61,6 +61,7 @@ export const projects: Project[] = [
         link: '/projects/portfolio-site',
         challenge: 'モダンなフロントエンド技術（Astro）とコンテナ技術（Docker）を組み合わせつつ、AIエージェントに指示を出してコーディングを行う「Agentic Workflow」の実践。',
         solution: '要件定義から実装、デバッグまでをAIと対話しながら進めることで、開発効率を劇的に向上させました。また、Tailwind CSSを用いたダークモードデザインの厳密な再現を行いました。',
+        repoUrl: 'https://github.com/Sugasan3054/Portfolio'
     },
     {
         id: '3',
