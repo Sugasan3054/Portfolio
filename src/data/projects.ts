@@ -12,6 +12,7 @@ export type Project = {
     codeSnippet?: string;
     demoUrl?: string;
     repoUrl?: string;
+    overview?: string;
 };
 
 export const projects: Project[] = [
@@ -20,11 +21,23 @@ export const projects: Project[] = [
         slug: 'music-mixing', // URLも合わせるなら変更（任意）
         title: 'Music Mixing (Sound Stealth Puzzle)',
         category: 'Game',
-        description: '「音を録音・再生して物理現象を引き起こす」ステルスアクションパズル。敵の聴覚AIを回避しながら環境音（時計やレンジの音）を収集し、特定の周波数でのみ破壊可能なギミックを突破して進むゲームシステム。',
+        description: '「音を録音・再生して物理現象を引き起こす」ステルスアクションパズル。敵の聴覚AIを回避しながら環境音を収集し、特定の周波数でのみ破壊可能なギミックを突破して進むゲームシステム。',
+        overview: `
+    <h3 class="text-xl font-bold text-white mt-6 mb-3">コンセプト</h3>
+    <p class="mb-4 text-slate-300">
+      「音を録音して、それを再生することで物理現象を引き起こす」というコアメカニクスを用いたパズルゲームです。
+      敵の聴覚AIをかいくぐりながら環境音を収集し、特定の周波数でのみ破壊可能なギミックを突破します。
+    </p>
+    <h3 class="text-xl font-bold text-white mt-6 mb-3">技術的な挑戦</h3>
+    <p class="mb-4 text-slate-300">
+      録音判定に厳密な制限（移動や環境ノイズによる失敗）を実装しました。
+      また、ギミック系クラスを汎用化し、Inspector上で反応する音IDを設定可能にすることで、レベルデザインの効率化を実現しています。
+    </p>
+        `,
         thumbnail: '/assets/music-mixing.png',
         tags: ['Unity', 'C#', 'AI Programming', 'Event Driven'],
         link: '/projects/music-mixing',
-        challenge: '「静寂を作る」というステルス性をシステムで強制するため、録音判定に厳密な制限（移動や環境ノイズによる失敗）が必要でした。また、クエストやギミックが増えてもコードを変更せずに調整できる拡張性が課題でした。',
+        challenge: '録音判定に厳密な制限（移動や環境ノイズによる失敗）が必要でした。また、クエストやギミックが増えてもコードを変更せずに調整できる拡張性が課題でした。',
         solution: '録音中は「EnvironmentNoiseChecker」で環境音を、「RecordingFailureMonitor」でプレイヤーの移動を監視し、条件を満たさない場合は即座に失敗させるロジックを実装。ギミック系は「DestructibleObject」として汎用化し、Inspector上で反応する音IDを設定可能にすることで、レベルデザインの効率化を実現しました。',
         codeSnippet: `// 録音処理とノイズ判定の簡略コード例
     public class SoundRecorder : MonoBehaviour {
@@ -81,6 +94,19 @@ export const projects: Project[] = [
         title: 'REMAINS EXPLORERS (Battle Minesweeper)',
         category: 'Game',
         description: 'マインスイーパーに「役職」と「心理戦」を掛け合わせた1vs1オンライン対戦ゲーム。10種類の役職能力と推理要素により、運だけではない高度な戦略戦を実現。',
+        overview: `
+    <h3 class="text-xl font-bold text-white mt-6 mb-3">ゲームシステム</h3>
+    <p class="mb-4 text-slate-300">
+      「マインスイーパ」をリアルタイム1vs1の対戦形式にリメイクしたオンラインゲームです。
+      10種類の役職能力と推理要素により、運だけではない<strong>高度な戦略戦</strong>を実現しました。
+      誤爆時のペナルティや相手の進行状況が見えるUIなど、対戦ゲームとしてのUXを意識しています。
+    </p>
+    <h3 class="text-xl font-bold text-white mt-6 mb-3">技術的な挑戦</h3>
+    <p class="mb-4 text-slate-300">
+      <strong>Photon PUN2</strong>を用いて盤面とプレイヤーアクションを同期し、単なるロジックパズルに「駆け引き」を加えました。
+      権限委譲による公平性の担保や、排他制御によるバグ防止など、堅牢な同期処理を実装しています。
+    </p>
+        `,
         thumbnail: '/assets/remains-explorers.png',
         tags: ['Unity', 'C#', 'Photon PUN2', 'GenAI (Canva)'],
         link: '/projects/remains-explorers',
@@ -109,6 +135,18 @@ void RequestSafeTiles(PhotonMessageInfo info) {
         title: '老若認証 (Face Recognition App)',
         category: 'Web App',
         description: '「どんな年代でも認識できる」をコンセプトにした顔識別アプリ。映画のシステムをモチーフにし、ユーザーのフィードバックでAIが賢くなる学習機能を搭載。',
+        overview: `
+    <h3 class="text-xl font-bold text-white mt-6 mb-3">コンセプト</h3>
+    <p class="mb-4 text-slate-300">
+      「どんな年代でも認識できる」をコンセプトにした、映画のシステムをモチーフにした顔識別アプリです。
+       PythonとFlaskを用い、ユーザーのフィードバックでAIが賢くなる学習機能を搭載しています。
+    </p>
+    <h3 class="text-xl font-bold text-white mt-6 mb-3">実装のポイント</h3>
+    <p class="mb-4 text-slate-300">
+      OpenCVと<strong>CNN（畳み込みニューラルネットワーク）</strong>を活用して、Webカメラ映像内の顔を検知・識別します。
+      バックエンド（Flask/Docker）からフロントエンドまでを一貫して実装し、データ登録も含む完結したWebアプリとして構築しました。
+    </p>
+        `,
         thumbnail: '/assets/face-recognition.png',
         tags: ['Python', 'Flask', 'Docker', 'Railway', 'OpenCV'],
         link: '/projects/anime-face-recognition',

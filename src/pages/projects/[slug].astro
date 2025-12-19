@@ -46,10 +46,7 @@ const { project } = Astro.props;
           <h2 class="text-2xl font-bold text-main mb-4 flex items-center gap-2">
             Overview
           </h2>
-          <p class="text-muted leading-relaxed">
-            {project.description}
-            {/* ここに詳細なOverviewテキストがあれば表示 */}
-          </p>
+          <div class="text-muted leading-relaxed" set:html={project.overview || project.description} />
         </section>
 
         {project.challenge && (
